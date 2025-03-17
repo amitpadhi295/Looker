@@ -22,6 +22,7 @@ view: d_dates {
     # This dimension will be called "Datekey" in Explore.
 
   dimension: datekey {
+    primary_key: yes
     type: number
     sql: ${TABLE}."DATEKEY" ;;
   }

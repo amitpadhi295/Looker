@@ -52,6 +52,7 @@ view: f_lineitems {
   }
 
   dimension: l_orderkey {
+    primary_key: yes
     type: number
     sql: ${TABLE}."L_ORDERKEY" ;;
   }
