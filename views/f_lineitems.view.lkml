@@ -127,6 +127,17 @@ view: f_lineitems {
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
   measure: count {
+    hidden: yes
     type: count
+  }
+  measure: total_sale_price {
+    type: sum
+    sql: ${l_totalprice} ;;
+    value_format_name: usd
+  }
+  measure: avg_sale_price {
+    type: average
+    sql: ${l_totalprice} ;;
+    value_format_name: usd
   }
 }
