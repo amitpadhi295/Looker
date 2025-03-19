@@ -126,18 +126,25 @@ view: f_lineitems {
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
+
+  dimension: l_calcprice {
+    label: "Total Price"
+    type:  number
+    sql: ${l_extendedprice}*(1-${l_discount})*(1+${l_tax} ;;
+  }
+
   measure: count {
     hidden: yes
     type: count
   }
   measure: total_sale_price {
     type: sum
-    sql: ${l_totalprice} ;;
+    sql: ${l_calcprice} ;;
     value_format_name: usd
   }
   measure: avg_sale_price {
     type: average
-    sql: ${l_totalprice} ;;
+    sql: ${l_calcprice} ;;
     value_format_name: usd
   }
 }
