@@ -123,11 +123,13 @@ view: f_lineitems {
   }
 
   dimension: l_totalprice {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
 
   dimension: l_calcprice {
+    hidden: yes
     label: "Total Price"
     type:  number
     sql: ${l_extendedprice}*(1-${l_discount})*(1+${l_tax}) ;;
@@ -136,6 +138,12 @@ view: f_lineitems {
   measure: count {
     hidden: yes
     type: count
+  }
+
+  measure: total_sale_price_test {
+    type: sum
+    sql: ${l_totalprice} ;;
+    value_format_name: usd
   }
   measure: total_sale_price {
     type: sum
