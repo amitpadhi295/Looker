@@ -140,11 +140,6 @@ view: f_lineitems {
     type: count
   }
 
-  measure: total_sale_price_test {
-    type: sum
-    sql: ${l_totalprice} ;;
-    value_format_name: usd
-  }
   measure: total_sale_price {
     type: sum
     sql: ${l_calcprice} ;;
