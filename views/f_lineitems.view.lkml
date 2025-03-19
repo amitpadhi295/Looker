@@ -130,7 +130,7 @@ view: f_lineitems {
   dimension: l_calcprice {
     label: "Total Price"
     type:  number
-    sql: ${l_extendedprice}*(1-${l_discount})*(1+${l_tax} ;;
+    sql: ${l_extendedprice}*(1-${l_discount})*(1+${l_tax}) ;;
   }
 
   measure: count {
