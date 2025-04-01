@@ -152,7 +152,7 @@ view: f_lineitems {
   }
 
   measure: total_sale_price_ship_air {
-    filters: [l_shipmode: "AIR",l_shipmode: "REG AIR"]
+    filters: [l_shipmode: "AIR,REG AIR"]
     type: sum
     sql: ${l_calcprice} ;;
     value_format_name: usd
