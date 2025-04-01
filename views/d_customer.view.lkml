@@ -50,4 +50,10 @@ view: d_customer {
     type: count
     drill_fields: [c_name]
   }
+  measure: total_sale_price_russia {
+    type: sum
+    sql: ${f_lineitems.l_calcprice} ;;
+    value_format_name: usd
+    filters: [c_nation: "RUSSIA"]
+  }
 }
