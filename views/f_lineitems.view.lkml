@@ -150,4 +150,11 @@ view: f_lineitems {
     sql: ${l_calcprice} ;;
     value_format_name: usd
   }
+
+  measure: total_sale_price_ship_air {
+    filters: [l_shipmode: "Air"]
+    type: sum
+    sql: ${l_calcprice} ;;
+    value_format_name: usd
+  }
 }
