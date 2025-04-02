@@ -113,6 +113,7 @@ view: f_lineitems {
   }
 
   dimension: l_supplycost {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
   }
@@ -152,6 +153,7 @@ view: f_lineitems {
   }
 
   measure: total_sale_price_ship_air {
+    label: "Total Sale Price Shipped By Air"
     filters: [l_shipmode: "AIR,REG AIR"]
     type: sum
     sql: ${l_calcprice} ;;
@@ -159,9 +161,38 @@ view: f_lineitems {
   }
 
   measure: total_sale_price_russia {
+    label: "Total Russia Sales"
     type: sum
     sql:${l_calcprice} ;;
     value_format_name: usd
     filters: [d_customer.c_nation: "RUSSIA"]
   }
+
+  measure: completed_order_sale_price {
+    label: "Total Gross Revenue"
+    type: sum
+    sql:${l_calcprice} ;;
+    value_format_name: usd
+    filters: [l_orderstatus: "F"]
+  }
+
+  measure: total_cost {
+    label: "Total Cost"
+    type: sum
+    sql: ${l_supplycost} ;;
+    value_format_name: usd
+  }
+
+  measure: total_gross_margin {
+    label: "Total Gross Margin Amount"
+    sql: ${completed_order_sale_price}-${total_cost} ;;
+    value_format_name: usd
+  }
+
+  measure: total_gross_margin_pct {
+    label: "Gross Margin Percentage"
+    sql: ${total_gross_margin}/${completed_order_sale_price} ;;
+    value_format_name: usd
+  }
+
 }

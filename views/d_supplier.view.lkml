@@ -47,6 +47,7 @@ view: d_supplier {
     sql: ${TABLE}."S_SUPPKEY" ;;
   }
   dimension: s_supplier_grp {
+    label: "Cohort of suppliers according to Account Balance"
     type: string
     sql: case when ${s_acctbal}<=0 then '<=0'
     when ${s_acctbal}>=1 and ${s_acctbal}<=3000 then '1-3000'
