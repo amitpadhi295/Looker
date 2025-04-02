@@ -46,8 +46,21 @@ view: d_supplier {
     type: number
     sql: ${TABLE}."S_SUPPKEY" ;;
   }
+  dimension: s_supplier_grp {
+    type: string
+    sql: case when ${s_acctbal}<=0 then '<=0'
+    when ${s_acctbal}>=1 and ${s_acctbal}<=3000 then '1-3000'
+    when ${s_acctbal}>3000 and ${s_acctbal}<=5000 then '3001-5000'
+    when ${s_acctbal}>5000 and ${s_acctbal}<=7000 then '5001-7000'
+    when ${s_acctbal}>7000 then '>7000'
+    else '0-1' end;;
+    # tiers: [0,1,3000,5000,7000]
+    # style: integer
+  }
+
   measure: count {
     type: count
     drill_fields: [s_name]
   }
+
 }
