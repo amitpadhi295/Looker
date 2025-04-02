@@ -157,4 +157,11 @@ view: f_lineitems {
     sql: ${l_calcprice} ;;
     value_format_name: usd
   }
+
+  measure: total_sale_price_russia {
+    type: sum
+    sql:${l_calcprice} ;;
+    value_format_name: usd
+    filters: [d_customer.c_nation: "RUSSIA"]
+  }
 }
